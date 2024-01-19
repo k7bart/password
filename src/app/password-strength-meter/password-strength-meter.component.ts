@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { regex, firstStyles, secondStyles, thirdStyles } from '../../constants';
+import { PasswordStrengthService } from './../password-strength.service';
+import { firstStyles, secondStyles, thirdStyles } from '../../constants';
 
 @Component({
   selector: 'app-password-strength-meter',
@@ -9,32 +10,10 @@ import { regex, firstStyles, secondStyles, thirdStyles } from '../../constants';
 export class PasswordStrengthMeterComponent {
   password: string = '';
 
+  constructor(private passwordStrengthService: PasswordStrengthService) {}
+
   getPasswordStrength() {
-    const hasLetters = regex.letters.test(this.password);
-    const hasDigits = regex.digits.test(this.password);
-    const hasSymbols = regex.symbols.test(this.password);
-
-    if (!this.password.length) return 'default';
-
-    if (this.password.length < 8) return 'short';
-
-    if (
-      (hasLetters && !hasSymbols && !hasDigits) ||
-      (!hasLetters && hasSymbols && !hasDigits) ||
-      (!hasLetters && !hasSymbols && hasDigits)
-    ) {
-      return 'easy';
-    }
-
-    if (
-      (!hasLetters && hasSymbols && hasDigits) ||
-      (hasLetters && !hasSymbols && hasDigits) ||
-      (hasLetters && hasSymbols && !hasDigits)
-    ) {
-      return 'medium';
-    }
-
-    return 'strong';
+    return this.passwordStrengthService.getPasswordStrength(this.password);
   }
 
   getFirstStyle() {
