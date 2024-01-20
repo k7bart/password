@@ -4,26 +4,28 @@ export const regex = {
   symbols: /[^a-zA-Z0-9]/,
 };
 
-export const firstStyles = {
-  short: { 'background-color': 'red' },
-  easy: { 'background-color': 'red' },
-  medium: { 'background-color': 'yellow' },
-  strong: { 'background-color': 'green' },
-  default: { 'background-color': 'grey' },
-};
+export type StrengthType = 'default' | 'short' | 'easy' | 'medium' | 'strong';
 
-export const secondStyles = {
-  short: { 'background-color': 'red' },
-  easy: { 'background-color': 'grey' },
-  medium: { 'background-color': 'yellow' },
-  strong: { 'background-color': 'green' },
-  default: { 'background-color': 'grey' },
-};
-
-export const thirdStyles = {
-  short: { 'background-color': 'red' },
-  easy: { 'background-color': 'grey' },
-  medium: { 'background-color': 'grey' },
-  strong: { 'background-color': 'green' },
-  default: { 'background-color': 'grey' },
+export const styles = {
+  first: {
+    short: { 'background-color': 'red' },
+    easy: { 'background-color': 'red' },
+    medium: { 'background-color': 'yellow' },
+    strong: { 'background-color': 'green' },
+    default: { 'background-color': 'grey' },
+  },
+  second: {
+    short: { 'background-color': 'red' },
+    easy: { 'background-color': 'grey' },
+    medium: { 'background-color': 'yellow' },
+    strong: { 'background-color': 'green' },
+    default: { 'background-color': 'grey' },
+  },
+  third: {
+    short: { 'background-color': 'red' },
+    easy: { 'background-color': 'grey' },
+    medium: { 'background-color': 'grey' },
+    strong: { 'background-color': 'green' },
+    default: { 'background-color': 'grey' },
+  },
 };

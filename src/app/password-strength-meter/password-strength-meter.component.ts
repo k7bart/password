@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PasswordStrengthService } from './../password-strength.service';
-import { firstStyles, secondStyles, thirdStyles } from '../../constants';
+import { styles, StrengthType } from '../../constants';
 
 @Component({
   selector: 'app-password-strength-meter',
@@ -10,21 +10,17 @@ import { firstStyles, secondStyles, thirdStyles } from '../../constants';
 export class PasswordStrengthMeterComponent {
   password: string = '';
 
+  styles = styles;
+
   constructor(private passwordStrengthService: PasswordStrengthService) {}
 
   getPasswordStrength() {
     return this.passwordStrengthService.getPasswordStrength(this.password);
   }
 
-  getFirstStyle() {
-    return firstStyles[this.getPasswordStrength()];
-  }
-
-  getSecondStyle() {
-    return secondStyles[this.getPasswordStrength()];
-  }
-
-  getThirdStyle() {
-    return thirdStyles[this.getPasswordStrength()];
+  getStyle(style: Record<StrengthType, { 'background-color': string }>): {
+    'background-color': string;
+  } {
+    return style[this.getPasswordStrength()];
   }
 }
